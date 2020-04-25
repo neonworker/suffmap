@@ -10,6 +10,7 @@ const bierdeckelRoute = require('./routes/content/bierdeckel');
 dotenv.config();
 
 //das ist ein test
+//noch ein test
 
 //Connect to DB
 mongoose.connect(process.env.DB_CONNECT, {useNewUrlParser: true}, () => 
