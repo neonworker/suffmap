@@ -12,5 +12,5 @@ try{
     next();
 }catch{
     res.status(400).send('Invalid Token');
-}
+};
 }
