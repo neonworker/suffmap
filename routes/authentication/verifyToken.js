@@ -2,10 +2,7 @@ const jwt = require('jsonwebtoken');
 
 //Middleware function to protect content from logged-out users
 module.exports = function (req, res, next) {
-    console.log(req.header('auth-token'))
-    console.log(req.body)
     const token = req.header('auth-token');
-
     if (!token) return res.status(401).send('Access Denied');
 
     //Verify the token
