@@ -3,6 +3,6 @@ content-type: application/json
 
 {
     "name": "elliot",
-    "email": "elliot@gmail.com",
+    "email": "e@gmail.com",
     "password": "password"
 }

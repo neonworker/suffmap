@@ -34,15 +34,25 @@ router.post('/register', async (req, res) => {
         password: hashedPassword
     })
 
+    //Creating a token and assigning it
+    const token = jwt.sign({
+        _id: user._id
+    }, process.env.TOKEN_SECRET);
+    user.token = token
+
     //Adding user to the DB
     try {
+
         const savedUser = await user.save();
-        res.send({
-            user: user._id
+
+        return res.header('auth-token', token).send({
+            user_id: user._id,
+            name: user.name,
+            email: user.email
         });
     } catch (err) {
         console.log(err);
-        res.status(400).send(err);
+        return res.status(400).send(err);
     };
 })
 
@@ -65,23 +75,15 @@ router.post('/login', async (req, res) => {
     const validPassw = await bcrypt.compare(req.body.password, user.password);
     if (!validPassw) return res.status(400).send('password is wrong');
 
-    //Create and assign a token
-    const token = jwt.sign({
-        _id: user._id
-    }, process.env.TOKEN_SECRET);
+    //Get token from user 
+    const token = user.token
 
-    //Store tokens in user 
-    await User.findOneAndUpdate({
-        email: req.body.email
-    }, {
-        $push: {
-            tokens: token
-        }
-    }, {
-        new: true
-    })
-
-    res.header('auth-token', token).send(token);
+    //Sending token and user data to client
+    return res.header('auth-token', token).send({
+        user_id: user._id,
+        name: user.name,
+        email: user.email
+    });
 });
 
 module.exports = router;

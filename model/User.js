@@ -19,9 +19,10 @@ const UserSchema = mongoose.Schema({
 		max: 1024,
 		min: 6
 	},
-	tokens: {
-		type: [],
-		default: undefined
+	token: {
+		type: String,
+		default: undefined,
+		required: true
 	},
 	permissions: {
 		type: Number,

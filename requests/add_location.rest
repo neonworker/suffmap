@@ -1,5 +1,5 @@
 POST http://localhost:3000/api/location/add_new
-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWE0ODQ3ZGU0ODg2YjIwYTQ2OWRmNDIiLCJpYXQiOjE1ODc4NDAyMjF9.CQR64xIYbdIleXT0csjigl4bNjeEER0WqYH8Bytrjms
+auth-token: {{AUTH_TOKEN}}
 content-type: application/json
 
 {

@@ -60,8 +60,6 @@ router.get('/nearby_search', verify, async (req, res) => {
     const lon = req.query.lon
     const radius = req.query.radius
 
-    console.log(req.query)
-
     if (radius > 2000) return res.status(400).send({
         err: "Radius to big => max Radius: 2000 (in meters)",
         radius: radius
@@ -71,8 +69,6 @@ router.get('/nearby_search', verify, async (req, res) => {
     const distance = ((2 * radius * Math.sqrt(2)) / 2) / 1000
     const bearings = [45, 135, 225, 315]
     let borderPoints = []
-
-    console.log(distance)
 
     bearings.forEach(bearing => {
         borderPoints.push(turf.destination(pos, distance, bearing))
@@ -107,8 +103,6 @@ router.get('/nearby_search', verify, async (req, res) => {
         }
     });
 
-    console.log(filter)
-    console.log(result);
 
     if (result) {
         return res.status(200).send({
