@@ -23,6 +23,10 @@ const UserSchema = mongoose.Schema({
 		type: [],
 		default: undefined
 	},
+	permissions: {
+		type: Number,
+		default: 5 
+	},
 	locationsVisited: [{
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'Location',

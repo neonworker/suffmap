@@ -1,0 +1,6 @@
+permissions:
+0==admin
+1==moderator
+3==locationOwner
+4==verifiedUser
+5==user

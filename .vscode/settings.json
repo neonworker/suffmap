@@ -1,0 +1,8 @@
+{
+    "rest-client.environmentVariables": {
+        "local": {
+            "AUTH_TOKEN": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWE0NjI3ZDg3NWJjODQ0MTBjZGNiZTAiLCJpYXQiOjE1ODc4MzY4NTR9.r2hL7JAipazRt7YSC-5dry_6jwIQLPiX-4coI6a_Z5E",
+            "PASSWORD": "dasisteinsicherespassword"
+        }
+    }
+}

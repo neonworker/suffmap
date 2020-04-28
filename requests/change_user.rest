@@ -1,0 +1,12 @@
+POST http://localhost:3000/api/user/edit_user
+auth-token: {{AUTH_TOKEN}}
+content-type: application/json
+
+{
+    "auth-token": "{{AUTH_TOKEN}}",
+    "edited_user_id": "5ea4847de4886b20a469df42",
+    "new_name": "Eliott",
+    "new_email": "new_mail@test.com",
+    "new_permissions": "0"
+}
+
