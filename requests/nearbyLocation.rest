@@ -1,0 +1,2 @@
+GET http://localhost:3000/api/location/nearby_search?lat=49.4877638&lon=8.4669132&radius=817
+auth-token: {{AUTH_TOKEN}}
