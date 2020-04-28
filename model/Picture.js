@@ -2,9 +2,10 @@ let mongoose = require('mongoose');
 
 
 let PictureSchema= mongoose.Schema({
-	id_picture:{
-		type: Number,
-		required: true
+	public: {
+		type: Boolean,
+		required: true,
+		default: false
 	},
 	location:{
 		type: Schema.Types.ObjectId, 
@@ -28,7 +29,14 @@ let PictureSchema= mongoose.Schema({
 		type: Number,
 		required: true,
 	},
-	
+	owner: {
+		type: ObjectId,
+		ref: 'User',
+		required: true
+	}
+},
+{
+	timestamps: true
 });
 
 let Picture = module.exports = mongoose.model('Picture', PictureSchema);

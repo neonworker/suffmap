@@ -5,7 +5,8 @@ const dotenv = require('dotenv');
 
 //Import Routes
 const authRoute = require('./routes/authentication/auth');
-const bierdeckelRoute = require('./routes/content/bierdeckel');
+const bierdeckelRoute = require('./routes/bierdeckel');
+const locationRoute = require('./routes/location')
 
 dotenv.config();
 
@@ -22,5 +23,5 @@ app.use(express.json());
 //Route Middlewares
 app.use('/api/user', authRoute);
 app.use('/api/content/bierdeckel', bierdeckelRoute);
-
+app.use('/api/location/', locationRoute);
 app.listen(3000, () => console.log('Server running'));

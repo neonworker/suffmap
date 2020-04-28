@@ -22,5 +22,13 @@ const loginValidation = (data) => {
     
     };
 
+//Location Validation
+// ==>L8er
+const locationValidation = (data) =>{
+    const schmema = Joi.object({
+        
+    })
+}
+
 module.exports.registerValidation = registerValidation;
 module.exports.loginValidation = loginValidation;

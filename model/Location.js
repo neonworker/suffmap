@@ -2,8 +2,14 @@ let mongoose = require('mongoose');
 
 
 let LocationSchema= mongoose.Schema({
-	id_location:{
-		type: Number,
+	public: {
+		type: Boolean,
+		default: false,
+		required: true
+	},
+	owner:{
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'User',
 		required: true
 	},
 	name:{
@@ -38,6 +44,38 @@ let LocationSchema= mongoose.Schema({
 		type: Number,
 		required: true,
 	},
+	openingHours:[{
+		day:{
+			type: String
+		},
+		start:{
+			hour:{
+				type: Number
+			},
+			minute:{
+				type: Number
+			}
+		},
+		end: {
+			hour:{
+				type: Number
+			},
+			minute:{
+				type: Number
+			}
+		}
+	}],
+	pictures:[{
+		type:mongoose.Schema.Types.ObjectId,
+		default: undefined,
+	}],
+	events:[{
+		type:mongoose.Schema.Types.ObjectId,
+		default: undefined,
+	}]
+},
+{
+	timestamps: true
 });
 
 let Location = module.exports = mongoose.model('Location', LocationSchema);

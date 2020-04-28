@@ -2,23 +2,25 @@ let mongoose = require('mongoose');
 
 
 let SpecialOfferSchema = mongoose.Schema({
-	id_offer:{
-		type: Number,
+	location:{
+		type: ObjectId, 
+		ref: 'Location',
 		required: true
 	},
-	location:{
-		type: Schema.Types.ObjectId, 
-		ref: 'Location'
+	owner:{
+		type: ObjectId,
+		ref: 'User',
+		required: true
 	},
-	desc_de:{
+	description_de:{
 		type: String,
 		required: true,
-		max: 200
+		max: 2000
 	},
-	desc_en:{
+	description_en:{
 		type: String,
 		required: true,
-		max: 200
+		max: 2000
 	},
 	title_de:{
 		type: String,
@@ -35,6 +37,14 @@ let SpecialOfferSchema = mongoose.Schema({
 		required: true,
 		max: 15
 	},
+	pictures:[{
+		type: ObjectId,
+		default: undefined,
+		ref: 'Picture'
+	}]
+},
+{
+	timestamps: true
 });
 
 let SpecialOffer = module.exports = mongoose.model('SpecialOffer', SpecialOfferSchema);

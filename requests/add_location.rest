@@ -1,0 +1,15 @@
+POST http://localhost:3000/api/location/add_new
+auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWE0ODQ3ZGU0ODg2YjIwYTQ2OWRmNDIiLCJpYXQiOjE1ODc4NDAyMjF9.CQR64xIYbdIleXT0csjigl4bNjeEER0WqYH8Bytrjms
+content-type: application/json
+
+{
+    "public": true,
+    "owner": "5ea4847de4886b20a469df42",
+    "name": "keller kneipe",
+    "street": "Hauptstraße 1",
+    "zip": "12345",
+    "city": "Mannheim",
+    "country": "GER",
+    "lcoord": 49.492267,
+    "bcoord": 8.472750
+}
