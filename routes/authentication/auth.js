@@ -6,6 +6,7 @@ const {
     loginValidation
 } = require('../../validation');
 
+const verify = require('../authentication/verifyToken')
 const User = require('../../model/User');
 //Register function
 router.post('/register', async (req, res) => {
@@ -85,5 +86,59 @@ router.post('/login', async (req, res) => {
         email: user.email
     });
 });
+
+router.post('/change_password', verify, async (req, res) => {
+    //find current user
+    const user = await User.findOne({
+        _id: req.user._id
+    });
+
+    var edited_user = {};
+    //check if current user is user to be edited
+    //only search DB if it isnt
+    if (user._id.equals(req.body.edited_user_id)) {
+        edited_user = user;
+    } else {
+        edited_user = await User.findOne({
+            _id: req.body.edited_user_id
+        });
+    }
+
+    //check if user exists
+    if (!edited_user) return res.status(400).send({
+        error: "User not found",
+        edited_user_id: req.body.edited_user_id
+    });
+
+    if (user._id.equals(edited_user._id) || user.permissions == 0) {
+        if (req.body.new_password) {
+
+            //Hash the password
+            const salt = await bcrypt.genSalt(10);
+            const hashedPassword = await bcrypt.hash(req.body.new_password, salt);
+
+            //Update hashedPassword in DB
+            edited_user.password = hashedPassword;
+
+            try{
+            const savedUser = await edited_user.save()
+            
+            return res.status(201).send({
+                message:"New password is saved",
+                user_id: savedUser._id,
+                name: savedUser.name
+            })
+            }catch(err){
+                console.log(err);
+                return res.status(400).send(err);
+            }
+
+        }
+    }else return res.status(400).send({
+        err: "Not allowed to make this change",
+        user_id: user._id
+    })
+
+})
 
 module.exports = router;
