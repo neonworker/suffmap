@@ -1,2 +1,4 @@
 #Ignore Enviremont Variables
 *.env
+#Ignore VSCode settings
+.vscode/
