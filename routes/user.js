@@ -2,6 +2,8 @@ const router = require('express').Router();
 const verify = require('./authentication/verifyToken')
 const User = require('../model/User')
 var isEqual = require('lodash.isequal')
+
+//Route to edit user data: name, email
 router.post('/edit_user', verify, async (req, res) => {
 
     //find current user obj
@@ -30,9 +32,7 @@ router.post('/edit_user', verify, async (req, res) => {
     //mods can edit everyone except admins
     //everyone can edit their own user
 
-    if (user._id.equals(edited_user._id)) console.log(true);
-
-    if (user._id.equals(edited_user._id) || user.permissions == 0 || user.permissions == 1 && edited_user.permissions != 0) {
+     if (user._id.equals(edited_user._id) || user.permissions == 0 || user.permissions == 1 && edited_user.permissions != 0) {
 
         const userCached = edited_user.toObject();
 
@@ -40,7 +40,8 @@ router.post('/edit_user', verify, async (req, res) => {
         if (req.body.new_email) edited_user.email = req.body.new_email;
 
         await edited_user.save();
-        
+
+        //Send results back to client
         res.send({
             message: "User edited",
             new_user: {

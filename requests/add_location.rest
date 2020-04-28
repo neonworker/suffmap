@@ -10,6 +10,6 @@ content-type: application/json
     "zip": "12345",
     "city": "Mannheim",
     "country": "GER",
-    "lcoord": 49.492267,
-    "bcoord": 8.472750
+    "lon": 49.492267,
+    "lat": 8.472750
 }

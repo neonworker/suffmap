@@ -36,11 +36,11 @@ let LocationSchema= mongoose.Schema({
 		required: true,
 		max: 100
 	},
-	lcoord:{
+	lon:{
 		type: Number,
 		required: true,
 	},
-	bcoord:{
+	lat:{
 		type: Number,
 		required: true,
 	},

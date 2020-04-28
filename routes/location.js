@@ -38,8 +38,8 @@ router.post('/add_new', verify, async (req, res) => {
         zip: req.body.zip,
         city: req.body.city,
         country: req.body.country,
-        lcoord: req.body.lcoord,
-        bcoord: req.body.bcoord
+        lon: req.body.lon,
+        lat: req.body.lat
     })
     
     try{
@@ -53,6 +53,15 @@ router.post('/add_new', verify, async (req, res) => {
     }
 })
 
+//Find nearby Locations, depending on GPS Coords of user and radius
 
+router.get('/nearby_locations', verify, async (req, res) => {
+    const lat = req.query.lat
+    const lon = req.query.lon
+    const radius = req.query.radius
+
+
+
+})
 
 module.exports = router;

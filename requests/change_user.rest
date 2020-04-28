@@ -5,7 +5,7 @@ content-type: application/json
 {
     "auth-token": "{{AUTH_TOKEN}}",
     "edited_user_id": "{{ELLIOT_ID}}",
-    "new_name": "elliott",
+    "new_name": "eliot",
     "new_email": "new_mail@test.com"
 }
 
